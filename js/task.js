@@ -7,14 +7,16 @@ const refs = {
     secs: document.querySelector('span[data-value="secs"]'),
 };
 
-setInterval(() => {
-    // const targetDate = new Date('Jul 17, 2019');
+function calcTimeDifference() {
     const targetDate = new Date('Jul 17, 2020');
     const currentDate = Date.now();
     const deltaTime = targetDate - currentDate;
     updateClockface(deltaTime);
-}, 1000);
+};
 
+calcTimeDifference();
+
+setInterval(() => calcTimeDifference(), 1000);
 
 function updateClockface(time) {
     const days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
